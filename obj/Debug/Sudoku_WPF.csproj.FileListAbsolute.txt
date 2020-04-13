@@ -1,0 +1,14 @@
+Z:\Projects\Sudoku_WPF\Sudoku_WPF\bin\Debug\Sudoku_WPF.exe.config
+Z:\Projects\Sudoku_WPF\Sudoku_WPF\bin\Debug\Sudoku_WPF.exe
+Z:\Projects\Sudoku_WPF\Sudoku_WPF\bin\Debug\Sudoku_WPF.pdb
+Z:\Projects\Sudoku_WPF\Sudoku_WPF\obj\Debug\Sudoku_WPF.csprojAssemblyReference.cache
+Z:\Projects\Sudoku_WPF\Sudoku_WPF\obj\Debug\MainWindow.g.cs
+Z:\Projects\Sudoku_WPF\Sudoku_WPF\obj\Debug\App.g.cs
+Z:\Projects\Sudoku_WPF\Sudoku_WPF\obj\Debug\Sudoku_WPF_MarkupCompile.cache
+Z:\Projects\Sudoku_WPF\Sudoku_WPF\obj\Debug\Sudoku_WPF_MarkupCompile.lref
+Z:\Projects\Sudoku_WPF\Sudoku_WPF\obj\Debug\MainWindow.baml
+Z:\Projects\Sudoku_WPF\Sudoku_WPF\obj\Debug\Sudoku_WPF.g.resources
+Z:\Projects\Sudoku_WPF\Sudoku_WPF\obj\Debug\Sudoku_WPF.Properties.Resources.resources
+Z:\Projects\Sudoku_WPF\Sudoku_WPF\obj\Debug\Sudoku_WPF.csproj.GenerateResource.cache
+Z:\Projects\Sudoku_WPF\Sudoku_WPF\obj\Debug\Sudoku_WPF.exe
+Z:\Projects\Sudoku_WPF\Sudoku_WPF\obj\Debug\Sudoku_WPF.pdb
