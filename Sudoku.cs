@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace Sudoku_WPF
 {
     class Sudoku
     {
+        private MainWindow UIClass;
         public int[,] board = new int[9, 9];
-        public Sudoku()
+        public Sudoku(MainWindow UIClass)
         {
+            this.UIClass = UIClass;
             reset();
         }
 
@@ -26,10 +31,20 @@ namespace Sudoku_WPF
             // leeg veld gevonden, kijk welk cijfer veilig is en plaats deze
             for (int num = 1; num <= 9; num++)
             {
+                Console.WriteLine(num.ToString());
                 if (IsSafe(emptyPosition[0], emptyPosition[1], num))
                 {
                     // cijfer kan veilig worden geplaatst
                     board[emptyPosition[0], emptyPosition[1]] = num;
+                    if (UIClass.showProgress)
+                    {
+                        UIClass.Dispatcher.Invoke(new Action(() =>
+                        {
+                            UIClass.updateField(emptyPosition[0], emptyPosition[1], num);
+                            Thread.Sleep(1);
+                        }));
+                    }
+
                     if (SolveSoduku())
                     {
                         return true;
@@ -37,6 +52,15 @@ namespace Sudoku_WPF
                     else
                     {
                         board[emptyPosition[0], emptyPosition[1]] = 0;
+                        if(UIClass.showProgress)
+                        {
+                            UIClass.Dispatcher.Invoke(new Action(() =>
+                            {
+                                UIClass.updateField(emptyPosition[0], emptyPosition[1], 0);
+                                Thread.Sleep(1);
+                            }));
+                        }
+                        
                     }
                 }
             }
@@ -125,7 +149,9 @@ namespace Sudoku_WPF
             }
             return true;
         }
-
+        /// <summary>
+        /// Voor debuggen
+        /// </summary>
         public void printBoard()
         {
             for (int i = 0; i < 9; i++)
@@ -137,7 +163,9 @@ namespace Sudoku_WPF
                 Console.WriteLine(board[i, 8]);
             }
         }
-
+        /// <summary>
+        /// Laad voorbeeld in
+        /// </summary>
         public void loadExample()
         {
             board = new int[,]
@@ -153,7 +181,9 @@ namespace Sudoku_WPF
                 {0, 6, 0, 0, 9, 2, 7, 0, 0}
             };
         }
-
+        /// <summary>
+        /// Reset bord
+        /// </summary>
         public void reset()
         {
             board = new int[9, 9];

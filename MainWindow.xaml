@@ -5,21 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sudoku_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Remco's Sudoku Solver" Height="450" Width="800">
     <Canvas>
         <Grid x:Name="grid" ShowGridLines="True" Width="400" Height="420" />
-        <Button x:Name="losop" Content="los op!" Canvas.Left="600" Canvas.Top="20" Padding="20,5" Click="losOpClick" />
-        <Button x:Name="example" Content="Laad een voorbeeld" Canvas.Left="600" Canvas.Top="60" Padding="20,5" Click="voorbeeldClick" />
-        <Button x:Name="reset" Content="Maak leeg" Canvas.Left="600" Canvas.Top="100" Padding="20,5" Click="resetClick" />
-        <Button Content="1" Canvas.Left="600" Canvas.Top="150" Padding="10,5" Click="numClick" Background="{x:Null}" />
-        <Button Content="2" Canvas.Left="630" Canvas.Top="150" Padding="10,5" Click="numClick" Background="{x:Null}" />
-        <Button Content="3" Canvas.Left="660" Canvas.Top="150" Padding="10,5" Click="numClick" Background="{x:Null}" />
-        <Button Content="4" Canvas.Left="600" Canvas.Top="180" Padding="10,5" Click="numClick" Background="{x:Null}" />
-        <Button Content="5" Canvas.Left="630" Canvas.Top="180" Padding="10,5" Click="numClick" Background="{x:Null}" />
-        <Button Content="6" Canvas.Left="660" Canvas.Top="180" Padding="10,5" Click="numClick" Background="{x:Null}" />
-        <Button Content="7" Canvas.Left="600" Canvas.Top="210" Padding="10,5" Click="numClick" Background="{x:Null}" />
-        <Button Content="8" Canvas.Left="630" Canvas.Top="210" Padding="10,5" Click="numClick" Background="{x:Null}" />
-        <Button Content="9" Canvas.Left="660" Canvas.Top="210" Padding="10,5" Click="numClick" Background="{x:Null}" />
-        <Button Content="0" Canvas.Left="600" Canvas.Top="240" Padding="40,5" Click="numClick" Background="{x:Null}" />
+        <Button x:Name="losop" Content="los op!" Canvas.Left="600" Canvas.Top="20" Padding="20,5" Click="losOpClick" Background="Transparent" />
+        <Button x:Name="example" Content="Laad een voorbeeld" Canvas.Left="600" Canvas.Top="60" Padding="20,5" Click="voorbeeldClick" Background="Transparent" />
+        <Button x:Name="reset" Content="Maak leeg" Canvas.Left="600" Canvas.Top="100" Padding="20,5" Click="resetClick" Background="Transparent" />
+        <Button x:Name="showprogress" Content="Laat voortgang zien" Canvas.Left="600" Canvas.Top="140" Padding="20,5" Click="showProgressClick" Background="Transparent" />
+        <Button Content="1" Canvas.Left="600" Canvas.Top="180" Padding="10,5" Click="numClick" Background="{x:Null}" />
+        <Button Content="2" Canvas.Left="630" Canvas.Top="180" Padding="10,5" Click="numClick" Background="{x:Null}" />
+        <Button Content="3" Canvas.Left="660" Canvas.Top="180" Padding="10,5" Click="numClick" Background="{x:Null}" />
+        <Button Content="4" Canvas.Left="600" Canvas.Top="210" Padding="10,5" Click="numClick" Background="{x:Null}" />
+        <Button Content="5" Canvas.Left="630" Canvas.Top="210" Padding="10,5" Click="numClick" Background="{x:Null}" />
+        <Button Content="6" Canvas.Left="660" Canvas.Top="210" Padding="10,5" Click="numClick" Background="{x:Null}" />
+        <Button Content="7" Canvas.Left="600" Canvas.Top="240" Padding="10,5" Click="numClick" Background="{x:Null}" />
+        <Button Content="8" Canvas.Left="630" Canvas.Top="240" Padding="10,5" Click="numClick" Background="{x:Null}" />
+        <Button Content="9" Canvas.Left="660" Canvas.Top="240" Padding="10,5" Click="numClick" Background="{x:Null}" />
+        <Button Content="0" Canvas.Left="600" Canvas.Top="270" Padding="40,5" Click="numClick" Background="{x:Null}" />
     </Canvas>
 </Window>
