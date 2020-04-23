@@ -9,19 +9,32 @@ using System.Windows.Threading;
 
 namespace Sudoku_WPF
 {
+    /// <summary>
+    /// Sudoku class
+    /// </summary>
     class Sudoku
     {
         private MainWindow UIClass;
         public int[,] board = new int[9, 9];
+        /// <summary>
+        /// Sudoku constructor
+        /// </summary>
+        /// <param name="UIClass">Window class welke de UI beheerd tbv het updaten van de UI</param>
         public Sudoku(MainWindow UIClass)
         {
             this.UIClass = UIClass;
+            // voer reset uit om een leeg bord in te laden
             reset();
         }
-
+        /// <summary>
+        /// Los de sudoku (zoals in board) op
+        /// </summary>
+        /// <returns>return true indien opgelost, false indien niet opgelost</returns>
         public bool SolveSoduku()
         {
+            // Zoek naar het eerstvolgende lege veld
             int[] emptyPosition = CheckForEmptyField();
+            // Indien geen leeg veld, return true (dan is het immers opgelost)
             if (emptyPosition[0] == -1 && emptyPosition[1] == -1)
             {
                 // alle velden gevuld
@@ -31,29 +44,35 @@ namespace Sudoku_WPF
             // leeg veld gevonden, kijk welk cijfer veilig is en plaats deze
             for (int num = 1; num <= 9; num++)
             {
-                Console.WriteLine(num.ToString());
                 if (IsSafe(emptyPosition[0], emptyPosition[1], num))
                 {
                     // cijfer kan veilig worden geplaatst
                     board[emptyPosition[0], emptyPosition[1]] = num;
+                    // Indien de optie "laat voortgang zien" is aangevinkt, plaats het cijfer in de UI
                     if (UIClass.showProgress)
                     {
+                        // Plaats cijfer op UI via de queue van MainWindow
                         UIClass.Dispatcher.Invoke(new Action(() =>
                         {
                             UIClass.updateField(emptyPosition[0], emptyPosition[1], num);
+                            // Sleep 1ms zodat de voortgang nog bij te houden is in de UI
                             Thread.Sleep(1);
                         }));
                     }
-
+                    // SolveSudoku wordt nu opnieuw aangeroepen met het bijgewerkte bord.
+                    // Mbv backtracking wordt er zo gekeken of het bovengeplaatste cijfer goed / verkeerd is
                     if (SolveSoduku())
                     {
+                        // Cijfer is goed, return true
                         return true;
                     }
                     else
                     {
+                        // cijfer past niet, zet cijfer terug op 0
                         board[emptyPosition[0], emptyPosition[1]] = 0;
                         if(UIClass.showProgress)
                         {
+                            // Indien "laat voortgang zien" is ingeschakeld, werk UI bij
                             UIClass.Dispatcher.Invoke(new Action(() =>
                             {
                                 UIClass.updateField(emptyPosition[0], emptyPosition[1], 0);
@@ -64,6 +83,7 @@ namespace Sudoku_WPF
                     }
                 }
             }
+            // Indien tot hier, dan klopt cijfer niet, return false
             return false;
         }
 
@@ -130,6 +150,11 @@ namespace Sudoku_WPF
             return true;
         }
 
+        /// <summary>
+        /// Controleer of het opgegeven bord valide is.
+        /// Er mogen geen dubbele cijfers voorkomen in rij, kolom of box
+        /// </summary>
+        /// <returns>False of true obv valide bord</returns>
         public bool checkValidBoard()
         {
             for (int i = 0; i < 9; i++)
@@ -137,14 +162,7 @@ namespace Sudoku_WPF
                 for (int j = 0; j < 9; j++)
                 {
                     int num = board[i, j];
-                    if(num > 0)
-                    {
-                        if (!IsSafe(i, j, num))
-                        {
-                            Console.WriteLine("Ongeldig bord");
-                            return false;
-                        }
-                    }
+                    if (num > 0 && !IsSafe(i, j, num)) return false;
                 }
             }
             return true;
